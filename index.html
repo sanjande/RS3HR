@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0E7C66">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RS3 Portal">
 <title>RS3 Associates - Conveyance &amp; Reimbursement Portal</title>
 <!--
   RS3 Associates - Conveyance & Reimbursement Portal
@@ -1218,6 +1224,7 @@ ACT['pw-save'] = async el => {
   await lock(el, () => call('rs3_change_password', { p_old: a, p_new: b })); ['#pw-old', '#pw-new', '#pw-new2'].forEach(s => $(s).value = ''); toast('Password changed');
 };
 
+if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 start();
 </script>
 </body>
